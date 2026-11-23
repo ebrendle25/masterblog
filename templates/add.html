@@ -120,9 +120,13 @@
         <h1>Neuen Post schreiben</h1>
         <p class="subtitle">Teile deine Gedanken mit dem Masterblog.</p>
 
-        {% if error %}
-            <p class="error">{{ error }}</p>
-        {% endif %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
         <form action="{{ url_for('add') }}" method="POST">
             <div class="field">

@@ -1,6 +1,7 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, flash, redirect, render_template, request, url_for
 
 app = Flask(__name__)
+app.secret_key = "your_secret_key_here"
 
 blog_posts = [
     {
@@ -52,6 +53,18 @@ def add():
         return redirect(url_for("index"))
 
     return render_template("add.html")
+
+
+@app.route("/delete/<int:post_id>")
+def delete(post_id):
+    found_post = next((post for post in blog_posts if post_id == post["id"]), None)
+
+    if found_post is not None:
+        blog_posts.remove(found_post)
+        return redirect(url_for("index"))
+    else:
+        flash("Post not found.", "error")
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":
