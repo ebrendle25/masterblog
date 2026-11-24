@@ -1,7 +1,12 @@
+import os
+
+from dotenv import load_dotenv
 from flask import Flask, flash, redirect, render_template, request, url_for
 
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = "your_secret_key_here"
+app.secret_key = os.getenv("SECRET_KEY")
 
 blog_posts = [
     {
@@ -44,6 +49,7 @@ def add():
                     "author": author,
                     "title": title,
                     "content": content,
+                    "likes": 0,
                 }
             )
         else:
@@ -59,16 +65,15 @@ def add():
     return render_template("add.html")
 
 
-@app.route("/delete/<int:post_id>")
+@app.route("/delete/<int:post_id>", methods=["POST"])
 def delete(post_id):
     """Delete a blog post by its ID and redirect to the index page."""
-    found_post = fetch_post_by_id(post_id)
-
-    if found_post is not None:
-        blog_posts.remove(found_post)
-        return redirect(url_for("index"))
-    else:
+    post = fetch_post_by_id(post_id)
+    if post is None:
         flash("Post not found.", "error")
+    else:
+        blog_posts.remove(post)
+        flash("Post deleted.", "success")
     return redirect(url_for("index"))
 
 
@@ -106,16 +111,16 @@ def update(post_id):
     return render_template("update.html", post=post)
 
 
-@app.route("/like/<int:post_id>")
+@app.route("/like/<int:post_id>", methods=["POST"])
 def like(post_id):
     """Increment the like count for a blog post."""
     post = fetch_post_by_id(post_id)
     if post is not None:
         post["likes"] = post.get("likes", 0) + 1
-        return redirect(url_for("index"))
+        flash("Post liked.", "success")
     else:
         flash("Post not found.", "error")
-        return redirect(url_for("index"))
+    return redirect(url_for("index"))
 
 
 def fetch_post_by_id(post_id):
@@ -127,5 +132,6 @@ def fetch_post_by_id(post_id):
 
 
 if __name__ == "__main__":
-    """Run the Flask application."""
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    # Run the Flask application
+    debug = os.getenv("FLASK_DEBUG", "0") == "1"
+    app.run(host="0.0.0.0", port=5000)

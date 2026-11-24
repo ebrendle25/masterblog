@@ -78,6 +78,12 @@ body {
     margin-bottom: 1rem;
 }
 
+.success {
+    color: #10b981;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
 .delete-button {
     background: #ef4444;
     color: #ffffff;
@@ -86,10 +92,22 @@ body {
     text-decoration: none;
     font-weight: 500;
 }
+
 .delete-button:hover {
     background: #b91c1c;
     color: #ffffff;
 }
+
+.inline-form {
+    display: inline;
+}
+
+button.delete-button {
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
 .edit-button {
     background: #f59e0b;
     color: #ffffff;
@@ -98,10 +116,12 @@ body {
     text-decoration: none;
     font-weight: 500;
 }
+
 .edit-button:hover {
     background: #b45309;
     color: #ffffff;
 }
+
 .like-button {
     background: #10b981;
     color: #ffffff;
@@ -110,11 +130,123 @@ body {
     text-decoration: none;
     font-weight: 500;
 }
+
 .like-button:hover {
     background: #047857;
     color: #ffffff;
 }
+
+button.like-button {
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
 .like-count {
     margin-left: 0.5rem;
     font-weight: 500;
+}
+
+
+* { box-sizing: border-box; }
+
+.form-page {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #eef2f7 0%, #dfe7f1 100%);
+    color: #1f2933;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.card {
+    width: 100%;
+    max-width: 560px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(31, 41, 51, 0.12);
+    padding: 2rem 2.25rem;
+}
+
+h1 {
+    margin: 0 0 2rem;
+    font-size: 1.6rem;
+}
+
+.subtitle {
+    margin: 0 0 1.75rem;
+    color: #6b7785;
+    font-size: 0.95rem;
+}
+
+.field {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid #cfd8e3;
+    border-radius: 8px;
+    font: inherit;
+    background: #f9fbfd;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background: #ffffff;
+}
+
+textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.75rem;
+}
+
+.back {
+    color: #6b7785;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.back:hover {
+    color: #1f2933;
+    text-decoration: underline;
+}
+
+button {
+    background: #3b82f6;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+button:hover {
+    background: #2563eb;
 }
