@@ -1,3 +1,17 @@
-.venv
+# Python
+__pycache__/
+*.py[cod]
 .venv/
+venv/
+env/
+
+# Umgebungsvariablen (wichtig wegen load_dotenv / SECRET_KEY!)
 .env
+
+# PyCharm & VS Code
+.idea/
+.vscode/
+
+# Betriebssysteme
+.DS_Store
+Thumbs.db
