@@ -108,6 +108,7 @@ def update(post_id):
             )
         return redirect(url_for("index"))
 
+    flash("Post updated.", "success")
     return render_template("update.html", post=post)
 
 

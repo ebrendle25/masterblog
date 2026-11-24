@@ -1,215 +1,211 @@
-/* ---------- Navigation ---------- */
-body {
-    margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: #eef2f7;
-    color: #1f2933;
+/* ==========================================================================
+   0. Design-Tokens (CSS-Variablen)
+   ========================================================================== */
+:root {
+    /* Farben – Oberflächen & Text */
+    --color-bg-page: #eef2f7;
+    --color-bg-page-gradient-end: #dfe7f1;
+    --color-bg-surface: #ffffff;
+    --color-bg-input: #f9fbfd;
+
+    --color-text-main: #1f2933;
+    --color-text-muted: #4b5563;
+    --color-text-subtle: #6b7785;
+    --color-text-inverse: #ffffff;
+
+    --color-border: #cfd8e3;
+
+    /* Farben – Akzent & Aktionen */
+    --color-primary: #3b82f6;
+    --color-primary-hover: #2563eb;
+    --color-primary-ring: rgba(59, 130, 246, 0.2);
+
+    --color-edit: #f59e0b;
+    --color-edit-hover: #b45309;
+
+    --color-danger: #ef4444;
+    --color-danger-hover: #b91c1c;
+    --color-error-text: #dc2626;
+
+    --color-success: #10b981;
+    --color-success-hover: #047857;
+
+    /* Schatten */
+    --shadow-nav: 0 2px 10px rgba(31, 41, 51, 0.08);
+    --shadow-post: 0 4px 14px rgba(31, 41, 51, 0.08);
+    --shadow-card: 0 10px 30px rgba(31, 41, 51, 0.12);
+
+    /* Abstände */
+    --space-xs: 0.4rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.25rem;
+    --space-xl: 1.5rem;
+    --space-2xl: 2rem;
+
+    /* Border-Radien */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 14px;
+
+    /* Layout & Typografie */
+    --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --container-content: 760px;
+    --container-card: 560px;
 }
 
+/* ==========================================================================
+   1. Basis & Reset
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--color-bg-page);
+    color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   2. Navigation
+   ========================================================================== */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.9rem 2rem;
-    background: #ffffff;
-    box-shadow: 0 2px 10px rgba(31, 41, 51, 0.08);
+    padding: 0.9rem var(--space-2xl);
+    background: var(--color-bg-surface);
+    box-shadow: var(--shadow-nav);
 }
 
 .brand {
     font-size: 1.3rem;
     font-weight: 700;
-    color: #1f2933;
+    color: var(--color-text-main);
     text-decoration: none;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: var(--space-lg);
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
 .nav-links a {
-    color: #4b5563;
+    color: var(--color-text-muted);
     text-decoration: none;
     font-weight: 500;
 }
 
 .nav-links a:hover {
-    color: #1f2933;
+    color: var(--color-text-main);
 }
 
 .nav-links .nav-button {
-    background: #3b82f6;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
 }
 
 .nav-links .nav-button:hover {
-    background: #2563eb;
-    color: #ffffff;
+    background: var(--color-primary-hover);
+    color: var(--color-text-inverse);
 }
 
-/* ---------- Inhalt ---------- */
+/* ==========================================================================
+   3. Layout & Container (Index / Posts)
+   ========================================================================== */
 .content {
-    max-width: 760px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: var(--container-content);
+    margin: var(--space-2xl) auto;
+    padding: 0 var(--space-md);
 }
 
 .post {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.25rem;
-    box-shadow: 0 4px 14px rgba(31, 41, 51, 0.08);
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg) var(--space-xl);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-post);
 }
 
 .post h2 {
     margin-top: 0;
 }
 
-.error {
-    color: #dc2626;
-    font-weight: 500;
-    margin-bottom: 1rem;
-}
-
-.success {
-    color: #10b981;
-    font-weight: 500;
-    margin-bottom: 1rem;
-}
-
-.delete-button {
-    background: #ef4444;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.delete-button:hover {
-    background: #b91c1c;
-    color: #ffffff;
-}
-
-.inline-form {
-    display: inline;
-}
-
-button.delete-button {
-    border: none;
-    font: inherit;
-    cursor: pointer;
-}
-
-.edit-button {
-    background: #f59e0b;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.edit-button:hover {
-    background: #b45309;
-    color: #ffffff;
-}
-
-.like-button {
-    background: #10b981;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.like-button:hover {
-    background: #047857;
-    color: #ffffff;
-}
-
-button.like-button {
-    border: none;
-    font: inherit;
-    cursor: pointer;
-}
-
-.like-count {
-    margin-left: 0.5rem;
-    font-weight: 500;
-}
-
-
-* { box-sizing: border-box; }
-
+/* ==========================================================================
+   4. Formular-Seiten (Add / Update)
+   ========================================================================== */
 .form-page {
     margin: 0;
     min-height: 100vh;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: linear-gradient(135deg, #eef2f7 0%, #dfe7f1 100%);
-    color: #1f2933;
+    background: linear-gradient(
+        135deg,
+        var(--color-bg-page) 0%,
+        var(--color-bg-page-gradient-end) 100%
+    );
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: var(--space-2xl) var(--space-md);
 }
 
 .card {
     width: 100%;
-    max-width: 560px;
-    background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(31, 41, 51, 0.12);
-    padding: 2rem 2.25rem;
+    max-width: var(--container-card);
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-2xl) 2.25rem;
 }
 
-h1 {
-    margin: 0 0 2rem;
+.card h1 {
+    margin: 0 0 var(--space-2xl);
     font-size: 1.6rem;
 }
 
 .subtitle {
     margin: 0 0 1.75rem;
-    color: #6b7785;
+    color: var(--color-text-subtle);
     font-size: 0.95rem;
 }
 
 .field {
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-lg);
 }
 
 label {
     display: block;
     font-weight: 600;
     font-size: 0.9rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: var(--space-xs);
 }
 
 input[type="text"],
 textarea {
     width: 100%;
     padding: 0.7rem 0.85rem;
-    border: 1px solid #cfd8e3;
-    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
     font: inherit;
-    background: #f9fbfd;
+    background: var(--color-bg-input);
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 input[type="text"]:focus,
 textarea:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    background: #ffffff;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-ring);
+    background: var(--color-bg-surface);
 }
 
 textarea {
@@ -225,22 +221,30 @@ textarea {
 }
 
 .back {
-    color: #6b7785;
+    color: var(--color-text-subtle);
     text-decoration: none;
     font-size: 0.95rem;
 }
 
 .back:hover {
-    color: #1f2933;
+    color: var(--color-text-main);
     text-decoration: underline;
 }
 
+/* ==========================================================================
+   5. Buttons & Interaktionen
+   ========================================================================== */
+.inline-form {
+    display: inline;
+}
+
+/* Standard-Button (z. B. Absenden in Formularen) */
 button {
-    background: #3b82f6;
-    color: #ffffff;
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
     border: none;
-    border-radius: 8px;
-    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    padding: 0.75rem var(--space-xl);
     font: inherit;
     font-weight: 600;
     cursor: pointer;
@@ -248,5 +252,116 @@ button {
 }
 
 button:hover {
-    background: #2563eb;
+    background: var(--color-primary-hover);
+}
+
+/* Aktions-Buttons in Posts (funktioniert für <a> und <button>) */
+.edit-button,
+.delete-button,
+.like-button {
+    display: inline-block;
+    color: var(--color-text-inverse);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    border: none;
+    text-decoration: none;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.edit-button {
+    background: var(--color-edit);
+}
+
+.edit-button:hover {
+    background: var(--color-edit-hover);
+    color: var(--color-text-inverse);
+}
+
+.delete-button {
+    background: var(--color-danger);
+}
+
+.delete-button:hover {
+    background: var(--color-danger-hover);
+    color: var(--color-text-inverse);
+}
+
+.like-button {
+    background: var(--color-success);
+}
+
+.like-button:hover {
+    background: var(--color-success-hover);
+    color: var(--color-text-inverse);
+}
+
+.like-count {
+    margin-left: var(--space-sm);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   6. Status-Meldungen (Flash / Validierung)
+   ========================================================================== */
+.flash {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.1rem;
+    margin-bottom: 1.25rem;
+    border-radius: 10px;
+    border-left: 4px solid;
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(31, 41, 51, 0.06);
+    animation: flash-in 0.25s ease-out;
+}
+
+.flash::before {
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.flash-success {
+    background: #ecfdf5;
+    border-color: #10b981;
+    color: #065f46;
+}
+
+.flash-success::before {
+    content: "✓";
+}
+
+.flash-error {
+    background: #fef2f2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+.flash-error::before {
+    content: "!";
+}
+
+.flash-info {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    color: #1e40af;
+}
+
+.flash-info::before {
+    content: "i";
+}
+
+@keyframes flash-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
