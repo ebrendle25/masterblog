@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post bearbeiten – Masterblog</title>
+    <title>Update Blog Post</title>
     <style>
         * { box-sizing: border-box; }
 
@@ -117,7 +117,7 @@
 </head>
 <body>
     <main class="card">
-        <h1>Post Update</h1>
+        <h1>Update Blog Post</h1>
         <p class="subtitle">Teile deine Gedanken mit dem Masterblog.</p>
 
         {% if error %}
@@ -142,7 +142,7 @@
 
             <div class="actions">
                 <a class="back" href="{{ url_for('index') }}">← Zurück zur Übersicht</a>
-                <button type="submit">Submit</button>
+                <button type="submit">Update Post</button>
             </div>
         </form>
     </main>
