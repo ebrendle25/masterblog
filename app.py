@@ -9,12 +9,14 @@ blog_posts = [
         "author": "John Doe",
         "title": "First Post",
         "content": "This is my first post.",
+        "likes": 0,
     },
     {
         "id": 2,
         "author": "Jane Doe",
         "title": "Second Post",
         "content": "This is another post.",
+        "likes": 0,
     },
 ]
 
@@ -102,6 +104,18 @@ def update(post_id):
         return redirect(url_for("index"))
 
     return render_template("update.html", post=post)
+
+
+@app.route("/like/<int:post_id>")
+def like(post_id):
+    """Increment the like count for a blog post."""
+    post = fetch_post_by_id(post_id)
+    if post is not None:
+        post["likes"] = post.get("likes", 0) + 1
+        return redirect(url_for("index"))
+    else:
+        flash("Post not found.", "error")
+        return redirect(url_for("index"))
 
 
 def fetch_post_by_id(post_id):

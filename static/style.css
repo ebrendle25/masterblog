@@ -102,3 +102,19 @@ body {
     background: #b45309;
     color: #ffffff;
 }
+.like-button {
+    background: #10b981;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+}
+.like-button:hover {
+    background: #047857;
+    color: #ffffff;
+}
+.like-count {
+    margin-left: 0.5rem;
+    font-weight: 500;
+}
