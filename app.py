@@ -1,3 +1,5 @@
+"""A simple Flask blog application."""
+
 import os
 
 from dotenv import load_dotenv
@@ -21,6 +23,27 @@ blog_posts = [
         "author": "Jane Doe",
         "title": "Second Post",
         "content": "This is another post.",
+        "likes": 0,
+    },
+    {
+        "id": 3,
+        "author": "Alice Smith",
+        "title": "Getting Started with Flask",
+        "content": "Building a small web app with Python and Flask is fast and straightforward.",
+        "likes": 0,
+    },
+    {
+        "id": 4,
+        "author": "Bob Johnson",
+        "title": "Clean CSS Architecture",
+        "content": "Using CSS variables makes maintaining colors and spacing much easier.",
+        "likes": 0,
+    },
+    {
+        "id": 5,
+        "author": "Clara Davis",
+        "title": "Weekend Hiking Thoughts",
+        "content": "Spent the morning on a quiet forest trail before getting back to coding.",
         "likes": 0,
     },
 ]
