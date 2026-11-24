@@ -71,3 +71,9 @@ body {
 .post h2 {
     margin-top: 0;
 }
+
+.error {
+    color: #dc2626;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
