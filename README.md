@@ -12,6 +12,7 @@ A small blog application built with Flask. Posts can be created, edited, deleted
 - Form validation: empty or whitespace-only fields are rejected
 - Feedback via flash messages, e.g. when a post does not exist
 - Shared base template with navigation for all pages
+- CSRF protection for all POST forms and state-changing actions via Flask-WTF
 
 ## Tech Stack
 
@@ -19,6 +20,7 @@ A small blog application built with Flask. Posts can be created, edited, deleted
 - Flask (routing, Jinja2 templates, flash messages)
 - python-dotenv (configuration via `.env`)
 - HTML and CSS
+- Flask-WTF (CSRF protection)
 
 ## Project Structure
 
@@ -97,8 +99,8 @@ The blog is then available at <http://127.0.0.1:5000>.
 | `/`                   | GET       | Show all posts               |
 | `/add`                | GET, POST | Show the form / create post  |
 | `/update/<post_id>`   | GET, POST | Show the form / update post  |
-| `/delete/<post_id>`   | GET       | Delete a post                |
-| `/like/<post_id>`     | GET       | Add a like to a post         |
+| `/delete/<post_id>`   | POST      | Delete a post                |
+| `/like/<post_id>`     | POST      | Add a like to a post         |
 
 
 ## Background
