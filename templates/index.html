@@ -20,10 +20,12 @@
                 <form action="{{ url_for('delete', post_id=post.id) }}" method="POST"
                     class="inline-form"
                     onsubmit="return confirm('Are you sure you want to delete this post?');">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <button type="submit" class="delete-button">Delete</button>
                 </form>
                 <a class="edit-button" href="{{ url_for('update', post_id=post.id) }}">Edit</a>
                 <form action="{{ url_for('like', post_id=post.id) }}" method="POST" class="inline-form">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <button type="submit" class="like-button">Like</button>
                 </form>
                 <span class="like-count">Likes: {{ post.likes }}</span>
